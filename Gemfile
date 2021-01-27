@@ -6,7 +6,7 @@ gem 'rails', '3.2.22.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3'
-
+gem 'mysql2', '0.3.20'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,8 +37,9 @@ gem 'jquery-rails', '< 4'
 # To use debugger
 # gem 'debugger'
 
-gem 'rspec-rails', '~> 3.6.0'
-gem 'factory_bot_rails', '~> 4.10.0'
-gem 'debase'
-gem 'ruby-debug-ide'
-gem 'mysql2', '0.3.20'
+group :development, :test do
+  gem 'rspec-rails', '~> 3.6.0'
+  gem 'factory_bot_rails', '~> 4.10.0'
+  gem 'debase'
+  gem 'ruby-debug-ide'
+end
