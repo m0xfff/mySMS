@@ -14,6 +14,7 @@ docker-compose up -d db
 ```bash
 # creates the dev & test databases
 docker-compose run --rm web rake db:create
+docker-compose run --rm web rake db:migrate
 ```
 
 ```bash
