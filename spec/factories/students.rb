@@ -8,10 +8,6 @@ FactoryBot.define do
     birth_date "1994-10-10"
     gender "male"
 
-    trait :unique_email do
-      sequence(:email) { |n| "tester#{n}@example.com"}
-    end
-
     trait :over_18 do
       birth_date 18.years.ago
     end
