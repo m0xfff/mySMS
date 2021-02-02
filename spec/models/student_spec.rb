@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Student, :type => :model do
 
+  let(:student) { build(:student, title: "Mr", first_name: "John", middle_name: "Adam", last_name: "Smith") }
+
   it "returns a student's full name" do
-    student = build(:student, title: "Mr", first_name: "John", middle_name: "Adam", last_name: "Smith")
     expect(student.full_name).to eq("Mr John Adam Smith")
   end
 
