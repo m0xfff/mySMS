@@ -2,6 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Student, :type => :model do
 
+  it "returns a student's full name" do
+    student = build(:student, title: "Mr", first_name: "John", middle_name: "Adam", last_name: "Smith")
+    expect(student.full_name).to eq("Mr John Adam Smith")
+  end
+
+  it "returns a student's full name even if no middle name is supplied" do
+    student = build(:student, title: "Mr", first_name: "John", middle_name: nil, last_name: "Smith")
+
+    expect(student.full_name).to eq("Mr John Smith")
+  end
+
   context "with the title 'Miss'" do
     subject { build(:student, title: "Miss")}
     it { is_expected.to have_attributes(title: "Miss") }
