@@ -9,8 +9,7 @@ RSpec.describe Student, :type => :model do
   end
 
   it "returns a student's full name even if no middle name is supplied" do
-    student = build(:student, title: "Mr", first_name: "John", middle_name: nil, last_name: "Smith")
-
+    student.middle_name = nil
     expect(student.full_name).to eq("Mr John Smith")
   end
 
