@@ -40,6 +40,7 @@ gem 'jquery-rails', '< 4'
 group :development, :test do
   gem 'rspec-rails', '~> 3.6.0'
   gem 'factory_bot_rails', '~> 4.10.0'
+  gem 'test-unit', '~> 3.0'
   gem 'debase'
   gem 'ruby-debug-ide'
 end
