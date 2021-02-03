@@ -21,7 +21,7 @@ jobs:
         ruby-version: 2.3.8
     - name: Install MySQL lib & client
       run: |
-        sudo apt-get install libmysqlclient-dev && mysql-client
+        sudo apt-get install libmysqlclient-dev mysql-client
     - name: Install dependencies
       run: |
         gem install bundler -v 1.17
