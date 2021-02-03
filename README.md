@@ -1,4 +1,4 @@
-mySMS ![Build Status](https://github.com/m0xfff/mySMS/workflows/develop/badge.svg?branch=develop)
+mySMS ![develop](https://github.com/m0xfff/mySMS/workflows/develop/badge.svg)
 =========
 mySMS is a ReadyTech onboarding project. 
 
