@@ -1,9 +1,8 @@
 name: develop
-on:
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+on: [push, pull_request, workflow_dispatch]
+
+env:
+  MYSQL_DATABASE_HOST: 127.0.0.1
 
 jobs:
   test:
@@ -25,7 +24,7 @@ jobs:
         ruby-version: 2.3.8
     - name: Install MySQL lib & client
       run: |
-        sudo apt-get install default-libmysqlclient-dev && mysql-client
+        sudo apt-get install libmysqlclient-dev mysql-client
     - name: Install dependencies
       run: |
         gem install bundler -v 1.17
