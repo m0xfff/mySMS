@@ -1,6 +1,9 @@
 name: develop
 on: [push, pull_request, workflow_dispatch]
 
+env:
+  MYSQL_DATABASE_HOST: localhost
+
 jobs:
   test:
     runs-on: ubuntu-16.04
