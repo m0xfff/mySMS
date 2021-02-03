@@ -2,7 +2,7 @@ name: develop
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  MYSQL_DATABASE_HOST: localhost
+  MYSQL_DATABASE_HOST: 127.0.0.1
 
 jobs:
   test:
