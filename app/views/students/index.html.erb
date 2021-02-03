@@ -1,2 +1,16 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<h1>Students</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Birth date</th>
+  </tr>
+  <% @students.each do |student| %>
+  <tr>
+    <td><%= student.full_name %></td>
+    <td><%= student.email %></td>
+    <td><%= student.birth_date.to_formatted_s(:long) %></td>
+  </tr>
+  <% end %>
+</table>
