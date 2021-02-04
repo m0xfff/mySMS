@@ -5,11 +5,11 @@ RSpec.describe StudentsController, :type => :controller do
     subject { get :index }
 
     it "returns http success" do
-      expect(subject).to have_http_status(:success)
+      is_expected.to have_http_status(:success)
     end
 
     it "renders the index template" do
-      expect(subject).to render_template("students/index")
+      is_expected.to render_template("students/index")
     end
 
     context "with render_views" do
