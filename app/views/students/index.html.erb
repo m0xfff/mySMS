@@ -1,0 +1,17 @@
+<h1>Students</h1>
+
+<table class="table">
+  <tr>
+    <th scope="col">Full Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Birth Date</th>
+  </tr>
+  <% @students.each do |student| %>
+  <tr>
+    <td><%= student.full_name %></td>
+    <td><%= student.email %></td>
+    <td><%= student.birth_date.to_formatted_s(:long) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @students %>
