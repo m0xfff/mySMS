@@ -4,6 +4,7 @@
   <tr>
     <th scope="col">Full Name</th>
     <th scope="col">Email</th>
+    <th scope="col">Gender</th>
     <th scope="col">Birth Date</th>
     <th scope="col"></th>
   </tr>
@@ -11,7 +12,8 @@
   <tr>
     <td><%= student.full_name %></td>
     <td><%= student.email %></td>
-    <td><%= student.birth_date.to_formatted_s(:long) %></td>
+    <td><%= student.gender %></td>
+    <td><%= student.birth_date.strftime('%Y-%m-%d') %></td>
     <td>
       <%= link_to 'Show', student_path(student) %> |
       <%= link_to 'Edit', edit_student_path(student) %> |
