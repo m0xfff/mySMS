@@ -19,6 +19,11 @@ class StudentsController < ApplicationController
     end
   end
 
+  def destroy
+    @student.destroy
+    redirect_to students_url
+  end
+
   private
 
   def load_student
