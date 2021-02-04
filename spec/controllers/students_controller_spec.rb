@@ -50,7 +50,7 @@ RSpec.describe StudentsController, :type => :controller do
   describe "PUT #update" do
     subject { put :update, id: student, student: FactoryBot.attributes_for(:student, first_name: "Mike", last_name: "Jones") }
 
-    it "located the requested @contact" do
+    it "located the requested @student" do
       subject
       expect(assigns(:student)).to eq(student)
     end
@@ -63,5 +63,21 @@ RSpec.describe StudentsController, :type => :controller do
 
     it { is_expected.to have_http_status(:redirect) }
     it { is_expected.to redirect_to student }
+  end
+
+  describe "DELETE #destroy" do
+    subject { delete :destroy, id: student }
+
+    it "located the requested @student" do
+      subject
+      expect(assigns(:student)).to eq(student)
+    end
+
+    it "deletes the student" do
+      s = FactoryBot.create(:student)
+      expect{ delete :destroy, id: s }.to change(Student, :count).by(-1)
+    end
+
+    it { is_expected.to redirect_to students_url }
   end
 end
