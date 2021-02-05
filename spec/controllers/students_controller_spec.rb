@@ -11,6 +11,11 @@ RSpec.describe StudentsController, :type => :controller do
       expect(assigns(:students)).to eq([student])
     end
 
+    it "should be decorated" do
+      subject
+      expect(assigns(:students)).to be_decorated_with StudentsDecorator
+    end
+
     it { is_expected.to have_http_status(:success) }
     it { is_expected.to render_template("students/index") }
 
@@ -18,7 +23,7 @@ RSpec.describe StudentsController, :type => :controller do
       render_views
 
       it "has a Students heading" do
-        expect(subject.body).to match /<h1>Students</
+        expect(subject.body).to match /<h1>🎓 Students</
       end
     end
   end
@@ -29,6 +34,11 @@ RSpec.describe StudentsController, :type => :controller do
     it "assigns the requests student to @student" do
       subject
       expect(assigns(:student)).to eq(student)
+    end
+
+    it "should be decorated" do
+      subject
+      expect(assigns(:student)).to be_decorated_with StudentDecorator
     end
 
     it { is_expected.to have_http_status(:success) }
@@ -43,6 +53,11 @@ RSpec.describe StudentsController, :type => :controller do
       expect(assigns(:student)).to eq(student)
     end
 
+    it "should be decorated" do
+      subject
+      expect(assigns(:student)).to be_decorated_with StudentDecorator
+    end
+
     it { is_expected.to have_http_status(:success) }
     it { is_expected.to render_template("students/edit") }
   end
@@ -53,6 +68,11 @@ RSpec.describe StudentsController, :type => :controller do
     it "located the requested @student" do
       subject
       expect(assigns(:student)).to eq(student)
+    end
+
+    it "should be decorated" do
+      subject
+      expect(assigns(:student)).to be_decorated_with StudentDecorator
     end
 
     it "changes @student's attributes" do

@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   before_filter :load_student, :except => [:index]
 
   def index
-    @students = Student.paginate(page: params[:page], per_page: Student::DEFAULT_PER_PAGE)
+    @students = Student.paginate(page: params[:page], per_page: Student::DEFAULT_PER_PAGE).decorate
   end
 
   def show
@@ -27,6 +27,6 @@ class StudentsController < ApplicationController
   private
 
   def load_student
-    @student = Student.find(params[:id])
+    @student = Student.find(params[:id]).decorate
   end
 end

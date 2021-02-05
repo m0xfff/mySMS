@@ -1,4 +1,4 @@
-<h1>[<%= @student.id %>] <%= @student.full_name %></h1>
+<h1>🧑‍🎓 [<%= @student.id %>] <%= @student.full_name %></h1>
 
 <p>
   <b>Title:</b>
@@ -32,7 +32,7 @@
 
 <p>
   <b>Birth date:</b>
-  <%= @student.birth_date.strftime('%Y-%m-%d') %>
+  <%= @student.born %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
