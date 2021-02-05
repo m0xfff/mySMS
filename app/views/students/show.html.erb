@@ -35,6 +35,6 @@
   <%= @student.born %>
 </p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %> |
-<%= link_to 'Delete', student_path(@student), method: :delete %>
+<%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
+<%= link_to 'Back', students_path, class: "btn btn-default" %>
+<%= link_to 'Delete', student_path(@student), method: :delete, class: "btn btn-default btn-danger" %>
