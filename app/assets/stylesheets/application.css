@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+/* Bootstrap 3.2 lacks Flexbox support so adding these here in the meantime */
+.d-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
