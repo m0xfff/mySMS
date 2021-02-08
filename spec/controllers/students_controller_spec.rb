@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe StudentsController, :type => :controller do
-  let(:student) { FactoryBot.create(:student, first_name: "John", last_name: "Smith") }
+  let!(:student) { FactoryBot.create(:student, first_name: "John", last_name: "Smith") }
 
   describe "GET #index" do
     subject { get :index }
