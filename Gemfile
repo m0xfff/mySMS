@@ -47,4 +47,5 @@ group :development, :test do
   gem 'test-unit', '~> 3.0'
   gem 'debase'
   gem 'ruby-debug-ide'
+  gem 'faker'
 end

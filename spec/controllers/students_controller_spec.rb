@@ -1,16 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe StudentsController, :type => :controller do
+  let(:student) { FactoryBot.create(:student, first_name: "John", last_name: "Smith") }
+
   describe "GET #index" do
     subject { get :index }
 
-    it "returns http success" do
-      is_expected.to have_http_status(:success)
+    it "populates an array of students" do
+      subject
+      expect(assigns(:students)).to eq([student])
     end
 
-    it "renders the index template" do
-      is_expected.to render_template("students/index")
-    end
+    it { is_expected.to have_http_status(:success) }
+    it { is_expected.to render_template("students/index") }
 
     context "with render_views" do
       render_views
@@ -19,5 +21,47 @@ RSpec.describe StudentsController, :type => :controller do
         expect(subject.body).to match /<h1>Students</
       end
     end
+  end
+
+  describe "GET #show" do
+    subject { get :show, id: student }
+
+    it "assigns the requests student to @student" do
+      subject
+      expect(assigns(:student)).to eq(student)
+    end
+
+    it { is_expected.to have_http_status(:success) }
+    it { is_expected.to render_template("students/show") }
+  end
+
+  describe "GET #edit" do
+    subject { get :edit, id: student }
+
+    it "assigns the requests student to @student" do
+      subject
+      expect(assigns(:student)).to eq(student)
+    end
+
+    it { is_expected.to have_http_status(:success) }
+    it { is_expected.to render_template("students/edit") }
+  end
+
+  describe "PUT #update" do
+    subject { put :update, id: student, student: FactoryBot.attributes_for(:student, first_name: "Mike", last_name: "Jones") }
+
+    it "located the requested @contact" do
+      subject
+      expect(assigns(:student)).to eq(student)
+    end
+
+    it "changes @student's attributes" do
+      subject
+      expect { student.reload }.to change { student.first_name }.to("Mike")
+        .and change { student.last_name }.to("Jones")
+    end
+
+    it { is_expected.to have_http_status(:redirect) }
+    it { is_expected.to redirect_to student }
   end
 end

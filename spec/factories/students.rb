@@ -1,15 +1,11 @@
 FactoryBot.define do
   factory :student do
-    title "Mr"
-    first_name "John"
-    middle_name "Adam"
-    last_name "Smith"
-    email "tester@example.com"
-    birth_date "1994-10-10"
-    gender "male"
-
-    trait :over_18 do
-      birth_date 18.years.ago
-    end
+    title { Faker::Name.prefix}
+    first_name { Faker::Name.first_name }
+    middle_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    email { Faker::Internet.email }
+    birth_date { Faker::Date.birthday }
+    gender { Faker::Gender.type }
   end
 end
