@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Student, :type => :model do
-  let(:student) { build(:student, title: "Mr.", first_name: "John", middle_name: "Adam", last_name: "Smith", email: "tester@example.com", gender: "Male", birth_date: "2000-01-01") }
-  subject { student }
+  subject { build(:student, title: "Mr.", first_name: "John", middle_name: "Adam", last_name: "Smith", email: "tester@example.com", gender: "Male", birth_date: "2000-01-01") }
 
   it { is_expected.to have_attributes(title: "Mr.") }
   it { is_expected.to have_attributes(first_name: "John") }
