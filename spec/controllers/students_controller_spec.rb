@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe StudentsController, :type => :controller do
-  let!(:student) { FactoryBot.create(:student, first_name: "John", last_name: "Smith") }
+  let!(:student) { create(:student, first_name: "John", last_name: "Smith") }
 
   describe "GET #index" do
     subject { get :index }
@@ -63,7 +63,7 @@ RSpec.describe StudentsController, :type => :controller do
   end
 
   describe "PUT #update" do
-    subject { put :update, id: student, student: FactoryBot.attributes_for(:student, first_name: "Mike", last_name: "Jones") }
+    subject { put :update, id: student, student: attributes_for(:student, first_name: "Mike", last_name: "Jones") }
 
     it "located the requested @student" do
       subject
