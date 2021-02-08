@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe StudentsController, :type => :controller do
-  let(:student) { FactoryBot.create(:student, { first_name: "John", last_name: "Smith" }) }
+  let(:student) { FactoryBot.create(:student, first_name: "John", last_name: "Smith") }
 
   describe "GET #index" do
     subject { get :index }
@@ -57,9 +57,8 @@ RSpec.describe StudentsController, :type => :controller do
 
     it "changes @student's attributes" do
       subject
-      student.reload
-      expect(student.first_name).to eq("Mike")
-      expect(student.last_name).to eq("Jones")
+      expect { student.reload }.to change { student.first_name }.to("Mike")
+        .and change { student.last_name }.to("Jones")
     end
 
     it { is_expected.to have_http_status(:redirect) }
