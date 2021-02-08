@@ -94,8 +94,7 @@ RSpec.describe StudentsController, :type => :controller do
     end
 
     it "deletes the student" do
-      s = FactoryBot.create(:student)
-      expect{ delete :destroy, id: s }.to change(Student, :count).by(-1)
+      expect{ delete :destroy, id: student }.to change(Student, :count).by(-1)
     end
 
     it { is_expected.to redirect_to students_url }
