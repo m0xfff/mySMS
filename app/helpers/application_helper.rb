@@ -14,30 +14,22 @@ module ApplicationHelper
     protected
 
     def page_number(page)
-      current_number = page == current_page
+      aria_label = @template.will_paginate_translate(:page_aria_label, :page => page.to_i) { "Page #{page}" }
+      page_link = link(page, page, rel: rel_value(page), class: "page-link", "aria-label": aria_label)
 
-      aria_label = @template.will_paginate_translate(
-        :page_aria_label,
-        page: page.to_i
-      ) { ["Page", page].join(' ') }
-      page_link = link(
-        page,
-        page,
-        rel: rel_value(page),
-        class: "page-link",
-        "aria-label": aria_label
-      )
-      tag(
-        :li,
-        page_link,
-        class: ["page-item", current_number ? "active" : nil ].join(' '),
-        "aria-label": aria_label,
-        "aria-current": current_number ? "page" : nil
-      )
+      if current?(page)
+        tag(:li, page_link, class: "page-item active", "aria-label": aria_label, "aria-current": "page")
+      else
+        tag(:li, page_link, class: "page-item", "aria-label": aria_label)
+      end
     end
 
     def html_container(html)
       tag(:dive, html, container_attributes.merge(class: "pagination"))
+    end
+
+    def current?(page)
+      page == current_page
     end
   end
 end
