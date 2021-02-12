@@ -63,26 +63,45 @@ RSpec.describe StudentsController, :type => :controller do
   end
 
   describe "PUT #update" do
-    subject { put :update, id: student, student: attributes_for(:student, first_name: "Mike", last_name: "Jones") }
+    context "valid attributes" do
+      subject { put :update, id: student, student: attributes_for(:student, first_name: "Mike", last_name: "Jones", email: "tester@example.com") }
 
-    it "located the requested @student" do
-      subject
-      expect(assigns(:student)).to eq(student)
+      it "located the requested @student" do
+        subject
+        expect(assigns(:student)).to eq(student)
+      end
+
+      it "changes @student's attributes" do
+        subject
+        expect { student.reload }.to change { student.first_name }.to("Mike")
+          .and change { student.last_name }.to("Jones")
+          .and change { student.email }.to("tester@example.com")
+      end
+
+      it { is_expected.to have_http_status(:redirect) }
+      it { is_expected.to redirect_to student }
     end
 
-    it "should be decorated" do
-      subject
-      expect(assigns(:student)).to be_decorated_with StudentDecorator
-    end
+    context "invalid attributes" do
+      subject { put :update, id: student, student: attributes_for(:student, first_name: nil, last_name: nil, email: nil) }
 
-    it "changes @student's attributes" do
-      subject
-      expect { student.reload }.to change { student.first_name }.to("Mike")
-        .and change { student.last_name }.to("Jones")
-    end
+      it "located the requested @student" do
+        subject
+        expect(assigns(:student)).to eq(student)
+      end
 
-    it { is_expected.to have_http_status(:redirect) }
-    it { is_expected.to redirect_to student }
+      it "does not change @student's attributes" do
+        subject
+        student.reload
+
+        expect(student.first_name).to_not eq nil
+        expect(student.last_name).to_not eq nil
+        expect(student.email).to_not eq nil
+      end
+
+      it { is_expected.to have_http_status(:success) }
+      it { is_expected.to render_template("students/edit") }
+    end
   end
 
   describe "DELETE #destroy" do
