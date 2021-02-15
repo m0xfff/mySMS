@@ -51,4 +51,5 @@ group :development, :test do
   gem 'ruby-debug-ide'
   gem 'faker'
   gem 'byebug'
+  gem 'shoulda-matchers'
 end
