@@ -78,7 +78,6 @@ RSpec.describe StudentsController, :type => :controller do
           .and change { student.email }.to("tester@example.com")
       end
 
-      it { is_expected.to have_http_status(:redirect) }
       it { is_expected.to redirect_to student }
     end
 
@@ -94,9 +93,9 @@ RSpec.describe StudentsController, :type => :controller do
         subject
         student.reload
 
-        expect(student.first_name).to_not eq nil
-        expect(student.last_name).to_not eq nil
-        expect(student.email).to_not eq nil
+        expect(student.first_name).to_not be_nil
+        expect(student.last_name).to_not be_nil
+        expect(student.email).to_not be_nil
       end
 
       it { is_expected.to have_http_status(:success) }
