@@ -1,9 +1,19 @@
 class Student < ActiveRecord::Base
   attr_accessible :birth_date, :email, :first_name, :gender, :last_name, :middle_name, :title
 
-  DEFAULT_PER_PAGE = 5
+  DEFAULT_PER_PAGE = 20
 
-  def full_name
-    [title, first_name, middle_name, last_name].select(&:present?).join(' ')
+  before_save :downcase_email
+
+  validates :email, presence: true, length: { maximum: 255 },
+            format: { with: URI::MailTo::EMAIL_REGEXP },
+            uniqueness: true
+  validates :first_name, presence: true, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { maximum: 50 }
+
+  private
+
+  def downcase_email
+    self.email.downcase
   end
 end

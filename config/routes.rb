@@ -1,5 +1,5 @@
 MySMS::Application.routes.draw do
-  resources :students, only: [:index, :show, :edit, :update]
+  resources :students, only: [:index, :show, :edit, :update, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,55 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Student, :type => :model do
+  subject { build(:student, title: "Mr.", first_name: "John", middle_name: "Adam", last_name: "Smith", email: "tester@example.com", gender: "Male", birth_date: "2000-01-01") }
 
-  describe '#full_name' do
-    subject { student.full_name }
+  it { is_expected.to be_valid }
+  it { is_expected.to have_attributes(title: "Mr.") }
+  it { is_expected.to have_attributes(first_name: "John") }
+  it { is_expected.to have_attributes(middle_name: "Adam") }
+  it { is_expected.to have_attributes(last_name: "Smith") }
+  it { is_expected.to have_attributes(email: "tester@example.com") }
+  it { is_expected.to have_attributes(gender: "Male") }
+  it { is_expected.to have_attributes(birth_date: Date.new(2000, 1, 1))}
 
-    let(:student) { build(:student, title: "Mr", first_name: "John", middle_name: "Adam", last_name: "Smith") }
+  it { is_expected.to validate_presence_of(:first_name) }
+  it { is_expected.to validate_length_of(:first_name).is_at_most(50) }
 
-    it "returns a student's full name" do
-      is_expected.to eq("Mr John Adam Smith")
-    end
+  it { is_expected.to validate_presence_of(:last_name) }
+  it { is_expected.to validate_length_of(:last_name).is_at_most(50) }
 
-    context "when middle_name is blank" do
-      let(:student) { build(:student, title: "Mr", first_name: "John", middle_name: nil, last_name: "Smith") }
-
-      it { is_expected.to eq("Mr John Smith") }
-    end
-  end
-
-  context "with the title 'Miss'" do
-    subject { build(:student, title: "Miss")}
-    it { is_expected.to have_attributes(title: "Miss") }
-  end
-
-  context "with the first_name 'Alice'" do
-    subject { build(:student, first_name: "Alice")}
-    it { is_expected.to have_attributes(first_name: "Alice") }
-  end
-
-  context "with the middle_name 'Jane'" do
-    subject { build(:student, middle_name: "Jane")}
-    it { is_expected.to have_attributes(middle_name: "Jane") }
-  end
-
-  context "with the last_name 'Smith'" do
-    subject { build(:student, last_name: "Smith")}
-    it { is_expected.to have_attributes(last_name: "Smith") }
-  end
-
-  context "with the email 'tester@example.com'" do
-    subject { build(:student, email: "tester@example.com")}
-    it { is_expected.to have_attributes(email: "tester@example.com") }
-  end
-
-  context "with the birth_date '2000-6-6'" do
-    subject { build(:student, birth_date: "2000-6-6")}
-    it { is_expected.to have_attributes(birth_date: Date.new(2000, 6, 6)) }
-  end
-
-  context "with the gender 'female'" do
-    subject { build(:student, gender: "female")}
-    it { is_expected.to have_attributes(gender: "female") }
-  end
+  it { is_expected.to validate_uniqueness_of(:email) }
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_length_of(:email).is_at_most(255) }
+  it { is_expected.to allow_value('user@example.com', 'USER@foo.COM', 'A_US-ER@foo.bar.org', 'first.last@foo.jp', 'alice+bob@baz.cn').for(:email) }
+  it { is_expected.to_not allow_value('user@example,com', 'user_at_foo.org', 'user@example.', 'user@foo_baz.com', 'user@foo+baz.com').for(:email) }
 end
