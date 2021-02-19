@@ -1,5 +1,4 @@
-<h1>✍️ [<%= @student.id %>] <%= @student.full_name %></h1>
-
-<%= render 'form' %>
-<br />
-<%= link_to 'Back', students_path, class: "btn btn-default" %>
+%h1= "✍️ [#{@student.id}] #{@student.full_name}"
+= render 'form'
+%br/
+= link_to 'Back', students_path, class: "btn btn-default"
