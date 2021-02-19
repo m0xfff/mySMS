@@ -1,0 +1,18 @@
+%h1 👩‍🏫 Courses
+
+%table.table
+  %tr
+    %th{:scope => "col"} Name
+    %th{:scope => "col"} Semesters
+    %th{:scope => "col"} Allocation
+    %th{:scope => "col"} Start Date
+    %th{:scope => "col"} End Date
+  - @courses.each do |course|
+    %tr
+      %td= course.name
+      %td= course.number_of_semesters
+      %td= course.allocation
+      %td= course.commence
+      %td= course.conclude
+
+.d-flex.justify-content-center= will_paginate @courses
