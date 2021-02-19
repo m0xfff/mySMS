@@ -10,4 +10,9 @@ RSpec.describe Course, :type => :model do
   it { is_expected.to have_attributes(start_date: Date.new(2021, 2, 12)) }
   it { is_expected.to have_attributes(end_date: Date.new(2021, 10, 29)) }
   it { is_expected.to have_attributes(allocation: 30) }
+
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_length_of(:name).is_at_most(255) }
+
+  it { is_expected.to validate_presence_of(:allocation) }
 end
