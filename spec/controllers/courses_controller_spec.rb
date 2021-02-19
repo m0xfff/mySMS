@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController, :type => :controller do
-  let!(:course) { create(:course) }
+  let!(:course) { create(:course, name: "Criminology", allocation: 20) }
 
   describe "GET #index" do
     subject { get :index }
@@ -13,5 +13,67 @@ RSpec.describe CoursesController, :type => :controller do
 
     it { is_expected.to have_http_status(:success) }
     it { is_expected.to render_template("courses/index") }
+  end
+
+  describe "GET #show" do
+    subject { get :show, id: course }
+
+    it "assigns the requests course to @course" do
+      subject
+      expect(assigns(:course)).to eq(course)
+    end
+
+    it { is_expected.to have_http_status(:success) }
+    it { is_expected.to render_template("courses/show") }
+  end
+
+  describe "GET #edit" do
+    subject { get :edit, id: course }
+
+    it "assigns the requests course to @course" do
+      subject
+      expect(assigns(:course)).to eq(course)
+    end
+
+    it { is_expected.to have_http_status(:success) }
+    it { is_expected.to render_template("courses/edit") }
+  end
+
+  describe "PUT #update" do
+    context "valid attributes" do
+      subject { put :update, id: course, course: attributes_for(:course, name: "Sociology", allocation: 30) }
+
+      it "located the requested @course" do
+        subject
+        expect(assigns(:course)).to eq(course)
+      end
+
+      it "changes @course's attributes" do
+        subject
+        expect { course.reload }.to change { course.name }.to("Sociology")
+          .and change { course.allocation }.to(30)
+      end
+
+      it { is_expected.to redirect_to course }
+    end
+
+    context "invalid attributes" do
+      subject { put :update, id: course, course: attributes_for(:course, name: nil, allocation: nil)}
+      it "located the requested @course" do
+        subject
+        expect(assigns(:course)).to eq(course)
+      end
+
+      it "does not change @course's attributes" do
+        subject
+        course.reload
+
+        expect(course.name).to_not be_nil
+        expect(course.allocation).to_not be_nil
+      end
+
+      it { is_expected.to have_http_status(:success) }
+      it { is_expected.to render_template("courses/edit") }
+    end
   end
 end
