@@ -28,6 +28,8 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'draper', '~> 2.1'
 
+gem "haml-rails", "~> 0.4.0"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
