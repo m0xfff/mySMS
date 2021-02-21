@@ -7,6 +7,7 @@
     %th{:scope => "col"} Allocation
     %th{:scope => "col"} Start Date
     %th{:scope => "col"} End Date
+    %th{:scope => "col"}
   - @courses.each do |course|
     %tr
       %td= course.name
@@ -14,5 +15,8 @@
       %td= course.allocation
       %td= course.commence
       %td= course.conclude
+      %td
+        = link_to 'Show', course_path(course), class: "btn btn-default btn-xs"
+        = link_to 'Edit', edit_course_path(course), class: "btn btn-default btn-xs"
 
 .d-flex.justify-content-center= will_paginate @courses
