@@ -1,0 +1,38 @@
+.row
+  .col-md-6
+    = form_for(@student) do |f|
+      - if @student.errors.any?
+        #errorExplanation
+          %h2= "#{pluralize(@student.errors.count, "error")} prohibited this student from being saved:"
+          %ul
+            - @student.errors.full_messages.each do |msg|
+              %li= msg
+
+      .form-group
+        = f.collection_select(:title_id, Title.all, :id, :name, {}, { class: 'form-control' })
+      .form-group
+        = f.label :first_name
+        %br/
+        = f.text_field :first_name, class: "form-control"
+      .form-group
+        = f.label :middle_name
+        %br/
+        = f.text_field :middle_name, class: "form-control"
+      .form-group
+        = f.label :last_name
+        %br/
+        = f.text_field :last_name, class: "form-control"
+      .form-group
+        = f.label :email
+        %br/
+        = f.text_field :email, class: "form-control"
+      .form-group
+        = f.label :gender
+        %br/
+        = f.text_field :gender, class: "form-control"
+      .form-group
+        = f.label :birth_date
+        %br/
+        = f.date_select :birth_date
+      .actions
+        = f.submit 'Save', class: "d-inline-block btn btn-success"
