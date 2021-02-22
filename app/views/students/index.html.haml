@@ -2,11 +2,11 @@
 
 %table.table
   %tr
-    %th{:scope => "col"} Full Name
-    %th{:scope => "col"} Email
-    %th{:scope => "col"} Gender
-    %th{:scope => "col"} Birth Date
-    %th{:scope => "col"}
+    %th{scope: "col"} Full Name
+    %th{scope: "col"} Email
+    %th{scope: "col"} Gender
+    %th{scope: "col"} Birth Date
+    %th{scope: "col"}
   - @students.each do |student|
     %tr
       %td= student.full_name
