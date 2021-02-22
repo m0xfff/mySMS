@@ -1,0 +1,24 @@
+%h1= "🧑‍🎓 [#{@course.id}] #{@course.name}"
+
+%p
+  %strong Name:
+  = @course.name
+%p
+  %strong Description:
+  = @course.description
+%p
+  %strong Semesters:
+  = @course.number_of_semesters
+%p
+  %strong Allocation:
+  = @course.allocation
+%p
+  %strong Start Date:
+  = @course.commence
+%p
+  %strong End Date:
+  = @course.conclude
+
+= link_to 'Edit', edit_course_path(@course), class: "btn btn-default"
+= link_to 'Back', courses_path, class: "btn btn-default"
+= link_to 'Delete', course_path(@course), method: :delete, class: "btn btn-default btn-danger"

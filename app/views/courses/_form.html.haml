@@ -1,0 +1,36 @@
+.row
+  .col-md-6
+    = form_for(@course) do |f|
+      - if @course.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@course.errors.count, "error")} prohibit this course from being saved:"
+          %ul
+            - @course.errors.full_messages.each do |msg|
+              %li= msg
+
+      .form-group
+        = f.label :name
+        %br/
+        = f.text_field :name, class: "form-control"
+      .form-group
+        = f.label :description
+        %br/
+        = f.text_area :description, class: "form-control"
+      .form-group
+        = f.label :number_of_semesters
+        %br/
+        = f.text_field :number_of_semesters, class: "form-control"
+      .form-group
+        = f.label :allocation
+        %br/
+        = f.text_field :allocation, class: "form-control"
+      .form-group
+        = f.label :start_date
+        %br/
+        = f.date_select :start_date
+      .form-group
+        = f.label :end_date
+        %br/
+        = f.date_select :end_date
+      .actions
+        = f.submit 'Save', class: "d-inline-block btn btn-success"
