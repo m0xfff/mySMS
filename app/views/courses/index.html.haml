@@ -2,12 +2,12 @@
 
 %table.table
   %tr
-    %th{:scope => "col"} Name
-    %th{:scope => "col"} Semesters
-    %th{:scope => "col"} Allocation
-    %th{:scope => "col"} Start Date
-    %th{:scope => "col"} End Date
-    %th{:scope => "col"}
+    %th{scope: "col"} Name
+    %th{scope: "col"} Semesters
+    %th{scope: "col"} Allocation
+    %th{scope: "col"} Start Date
+    %th{scope: "col"} End Date
+    %th{scope: "col"}
   - @courses.each do |course|
     %tr
       %td= course.name
