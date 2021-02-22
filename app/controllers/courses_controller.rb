@@ -19,6 +19,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  def destroy
+    @course.destroy
+    redirect_to courses_url
+  end
+
   private
 
   def load_course

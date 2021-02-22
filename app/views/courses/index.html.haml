@@ -16,10 +16,11 @@
       %td= course.commence
       %td= course.conclude
       %td
-        -# = link_to 'Show', course_path(course), class: "btn btn-default btn-xs"
         %a.btn.btn-default.btn-xs{ :href => course_path(course), 'aria-label': 'Show' }
           %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }
         %a.btn.btn-default.btn-xs{ :href => edit_course_path(course), 'aria-label': 'Edit' }
           %span.glyphicon.glyphicon-edit{ 'aria-hidden': 'true' }
+        %a.btn.btn-danger.btn-xs{ :href => course_path(course), 'data-method': 'delete', :rel => 'nofollow' }
+          %span.glyphicon.glyphicon-remove{ 'aria-hidden': 'true' }
 
 .d-flex.justify-content-center= will_paginate @courses
