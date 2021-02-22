@@ -16,11 +16,11 @@
       %td= course.commence
       %td= course.conclude
       %td
-        %a.btn.btn-default.btn-xs{ :href => course_path(course), 'aria-label': 'Show' }
+        = link_to course_path(course), class: "btn btn-default btn-xs", 'aria-label': 'Show' do
           %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }
-        %a.btn.btn-default.btn-xs{ :href => edit_course_path(course), 'aria-label': 'Edit' }
+        = link_to edit_course_path(course), class: "btn btn-default btn-xs", 'aria-label': 'Edit' do
           %span.glyphicon.glyphicon-edit{ 'aria-hidden': 'true' }
-        %a.btn.btn-danger.btn-xs{ :href => course_path(course), 'data-method': 'delete', :rel => 'nofollow' }
+        = link_to course_path(course), method: :delete, class: "btn btn-danger btn-xs", 'aria-label': 'Destroy' do
           %span.glyphicon.glyphicon-remove{ 'aria-hidden': 'true' }
 
 .d-flex.justify-content-center= will_paginate @courses
