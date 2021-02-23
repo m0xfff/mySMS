@@ -2,10 +2,10 @@ class CourseDecorator < Draper::Decorator
   delegate_all
 
   def commence
-    object.start_date.strftime('%Y-%m-%d')
+    l object.start_date, format: :default
   end
 
   def conclude
-    object.end_date.strftime('%Y-%m-%d')
+    l object.end_date, format: :default
   end
 end

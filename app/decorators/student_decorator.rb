@@ -6,6 +6,6 @@ class StudentDecorator < Draper::Decorator
   end
 
   def born
-    object.birth_date.strftime('%Y-%m-%d')
+    l object.birth_date, format: :default
   end
 end
