@@ -67,6 +67,7 @@ GEM
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
     hike (1.2.3)
+    http_accept_language (2.1.1)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     journey (1.0.4)
@@ -185,6 +186,7 @@ DEPENDENCIES
   factory_bot_rails (~> 4.10.0)
   faker
   haml-rails (~> 0.4.0)
+  http_accept_language
   jquery-rails (< 4)
   less-rails
   mysql2 (= 0.3.20)
