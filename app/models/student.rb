@@ -2,8 +2,6 @@ class Student < ActiveRecord::Base
   attr_accessible :birth_date, :email, :first_name, :gender, :last_name, :middle_name, :title_id
   belongs_to :title
 
-  DEFAULT_PER_PAGE = 20
-
   before_save :downcase_email
 
   validates :email, presence: true, length: { maximum: 255 },
