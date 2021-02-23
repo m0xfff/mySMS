@@ -40,8 +40,10 @@ RSpec.describe CoursesController, :type => :controller do
   end
 
   describe "PUT #update" do
+    subject{ put :update, id: course, course: course_params }
+
     context "valid attributes" do
-      subject { put :update, id: course, course: attributes_for(:course, name: "Sociology", allocation: 30) }
+      let(:course_params) { attributes_for(:course, name: "Sociology", allocation: 30) }
 
       it "located the requested @course" do
         subject
@@ -58,7 +60,8 @@ RSpec.describe CoursesController, :type => :controller do
     end
 
     context "invalid attributes" do
-      subject { put :update, id: course, course: attributes_for(:course, name: nil, allocation: nil)}
+      let(:course_params) { attributes_for(:course, name: nil, allocation: nil) }
+
       it "located the requested @course" do
         subject
         expect(assigns(:course)).to eq(course)
