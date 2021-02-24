@@ -8,4 +8,5 @@ RSpec.describe Course, :type => :model do
   it { is_expected.to validate_length_of(:name).is_at_most(255) }
 
   it { is_expected.to validate_presence_of(:allocation) }
+  it { is_expected.to validate_numericality_of(:allocation) }
 end
