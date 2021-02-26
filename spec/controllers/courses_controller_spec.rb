@@ -51,9 +51,8 @@ RSpec.describe CoursesController, :type => :controller do
       end
 
       it "changes @course's attributes" do
-        subject
-        expect { course.reload }.to change { course.name }.to("Sociology")
-          .and change { course.allocation }.to(30)
+        expect { subject }.to change { course.reload.name }.to("Sociology")
+          .and change { course.reload.allocation }.to(30)
       end
 
       it { is_expected.to redirect_to course }
