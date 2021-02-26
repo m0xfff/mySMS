@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_filter :load_student, :except => [:index]
+  before_filter :load_student, except: [:index]
 
   def index
     @students = Student.paginate(page: params[:page], per_page: DEFAULT_PER_PAGE).decorate
@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
     if @student.update_attributes(params[:student])
       redirect_to(@student)
     else
-      render :action => "edit"
+      render action: :edit
     end
   end
 

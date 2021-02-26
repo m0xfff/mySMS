@@ -14,7 +14,7 @@ module ApplicationHelper
     protected
 
     def page_number(page)
-      aria_label = @template.will_paginate_translate(:page_aria_label, :page => page.to_i) { "Page #{page}" }
+      aria_label = @template.will_paginate_translate(:page_aria_label, page: page.to_i) { "Page #{page}" }
       page_link = link(page, page, rel: rel_value(page), class: "page-link", "aria-label": aria_label)
 
       if current?(page)
