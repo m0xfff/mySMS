@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InstituteController, type: :controller do
+RSpec.describe InstitutesController, type: :controller do
   let!(:institute) { create(:institute) }
 
   describe "GET #index" do
@@ -8,10 +8,10 @@ RSpec.describe InstituteController, type: :controller do
 
     it "populates an array of institutes" do
       subject
-      expect(assigns(:institute)).to eq([institute])
+      expect(assigns(:institutes)).to eq([institute])
     end
 
     it { is_expected.to have_http_status(:success) }
-    it { is_expected.to render_template("courses/index") }
+    it { is_expected.to render_template("institutes/index") }
   end
 end
