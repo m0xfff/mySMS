@@ -88,7 +88,7 @@ RSpec.describe CoursesController, :type => :controller do
     end
 
     it "deletes the course" do
-      expect{ delete :destroy, id: course }.to change(Course, :count).by(-1)
+      expect{ subject }.to change(Course, :count).by(-1)
     end
 
     it { is_expected.to redirect_to courses_url }
