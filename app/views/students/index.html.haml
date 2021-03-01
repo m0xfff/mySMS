@@ -14,8 +14,11 @@
       %td= student.gender
       %td= student.born
       %td
-        = link_to 'Show', student_path(student), class: "btn btn-default btn-xs"
-        = link_to 'Edit', edit_student_path(student), class: "btn btn-default btn-xs"
-        = link_to 'Delete', student_path(student), method: :delete, class: "btn btn-danger btn-xs"
+        = link_to student_path(student), class: "btn btn-default btn-xs", 'aria-label': 'Show' do
+          %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }
+        = link_to edit_student_path(student), class: "btn btn-default btn-xs", 'aria-label': 'Edit' do
+          %span.glyphicon.glyphicon-edit{ 'aria-hidden': 'true' }
+        = link_to student_path(student), method: :delete, class: "btn btn-danger btn-xs", 'aria-label': 'Destroy' do
+          %span.glyphicon.glyphicon-remove{ 'aria-hidden': 'true' }
 
 .d-flex.justify-content-center= will_paginate @students

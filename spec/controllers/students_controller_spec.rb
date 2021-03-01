@@ -72,10 +72,9 @@ RSpec.describe StudentsController, :type => :controller do
       end
 
       it "changes @student's attributes" do
-        subject
-        expect { student.reload }.to change { student.first_name }.to("Mike")
-          .and change { student.last_name }.to("Jones")
-          .and change { student.email }.to("tester@example.com")
+        expect { subject }.to change { student.reload.first_name }.to("Mike")
+          .and change { student.reload.last_name }.to("Jones")
+          .and change { student.reload.email }.to("tester@example.com")
       end
 
       it { is_expected.to redirect_to student }
