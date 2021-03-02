@@ -1,0 +1,17 @@
+.row
+  .col-md-6
+    = form_for(@institute) do |f|
+      - if @institute.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@institute.errors.count, "error")} prohibit this institute from being saved:"
+          %ul
+            - @institute.errors.full_messages.each do |msg|
+              %li= msg
+
+      .form-group
+        = f.label :name
+        %br/
+        = f.text_field :name, class: "form-control"
+      .actions
+        = f.submit 'Save', class: "d-inline-block btn btn-success"
+        = link_to 'Back', institutes_path, class: 'd-inline-block btn btn-default'

@@ -8,6 +8,9 @@ class InstitutesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   private
 
   def load_institute

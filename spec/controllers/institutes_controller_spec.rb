@@ -35,4 +35,16 @@ RSpec.describe InstitutesController, type: :controller do
     it { is_expected.to have_http_status(:success) }
     it { is_expected.to render_template('institutes/show') }
   end
+
+  describe 'GET #edit' do
+    subject { get :edit, id: institute }
+
+    it 'assigns the requests institute to @institute' do
+      subject
+      expect(assigns(:institute)).to eq(institute)
+    end
+
+    it { is_expected.to have_http_status(:success) }
+    it { is_expected.to render_template('institutes/edit') }
+  end
 end
