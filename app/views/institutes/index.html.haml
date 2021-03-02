@@ -1,0 +1,10 @@
+%h1 🏫 Institutes
+
+%table.table
+  %tr
+    %th{scope: "col"} Name
+  - @institutes.each do |institute|
+    %tr
+      %td= institute.name
+
+.d-flex.justify-content-center= will_paginate @institutes

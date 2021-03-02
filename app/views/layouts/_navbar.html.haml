@@ -13,3 +13,5 @@
           = link_to 'Students', students_path
         %li{ class: current_page?(courses_path) ? "active": nil }
           = link_to 'Courses', courses_path, class: current_page?(courses_path) ? "active" : nil
+        %li{ class: current_page?(institutes_path) ? "active": nil }
+          = link_to 'Institutes', institutes_path

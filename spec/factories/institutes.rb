@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :institute do
-    name { Faker::Educator.university }
+    sequence(:name) { |n| Faker::Educator.university + "-#{n}" }
   end
 end
