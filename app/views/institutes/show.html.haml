@@ -1,0 +1,7 @@
+%h1= "[#{@institute.id}] #{@institute.name}"
+
+%p
+  %strong Name:
+  = @institute.name
+
+= link_to 'Back', institutes_path, class: 'btn btn-default'
