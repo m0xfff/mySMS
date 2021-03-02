@@ -11,6 +11,14 @@ class InstitutesController < ApplicationController
   def edit
   end
 
+  def update
+    if @institute.update_attributes(params[:institute])
+      redirect_to(@institute)
+    else
+      render action: :edit
+    end
+  end
+
   private
 
   def load_institute
