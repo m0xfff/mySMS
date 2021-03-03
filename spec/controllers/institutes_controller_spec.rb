@@ -23,4 +23,58 @@ RSpec.describe InstitutesController, type: :controller do
       end
     end
   end
+
+  describe 'GET #show' do
+    subject { get :show, id: institute }
+
+    it 'assigns the requests institute to @institute' do
+      subject
+      expect(assigns(:institute)).to eq(institute)
+    end
+
+    it { is_expected.to have_http_status(:success) }
+    it { is_expected.to render_template('institutes/show') }
+  end
+
+  describe 'GET #edit' do
+    subject { get :edit, id: institute }
+
+    it 'assigns the requests institute to @institute' do
+      subject
+      expect(assigns(:institute)).to eq(institute)
+    end
+
+    it { is_expected.to have_http_status(:success) }
+    it { is_expected.to render_template('institutes/edit') }
+  end
+
+  describe 'PUT #update' do
+    let(:institute_params) { attributes_for(:institute, name: 'Sandwich School') }
+    subject { put :update, id: institute, institute: institute_params }
+
+    it "located the requested @institute" do
+      subject
+      expect(assigns(:institute)).to eq(institute)
+    end
+
+    context 'valid attributes' do
+      it 'changes the attributes of @institute' do
+        expect { subject }.to change { institute.reload.name }.to 'Sandwich School'
+      end
+
+      it { is_expected.to redirect_to institute }
+    end
+
+    context 'invalid attributes' do
+      let(:institute_params) { attributes_for(:institute, name: nil) }
+      let(:name) { institute.name }
+
+      it 'does not change the attributes of @institute' do
+        expect { subject }.to_not change { institute.reload.name }.from name
+      end
+
+      it { is_expected.to have_http_status(:success) }
+      it { is_expected.to render_template('institutes/edit') }
+    end
+  end
 end
