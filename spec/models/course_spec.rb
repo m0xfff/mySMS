@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Course, :type => :model do
-  let!(:institute) { create :institute }
-  subject { build(:course, institute: institute) }
+  subject { build(:course) }
 
   it { is_expected.to belong_to(:institute) }
 
