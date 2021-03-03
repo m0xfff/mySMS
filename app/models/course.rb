@@ -12,6 +12,10 @@ class Course < ActiveRecord::Base
 
   validate :ends_after_starts
 
+  def self.for_index(page:, per_page:)
+    includes(:institute).paginate(page: page, per_page: per_page)
+  end
+
   private
 
   def ends_after_starts

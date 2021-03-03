@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_filter :load_course, except: [:index]
 
   def index
-    @courses = Course.includes(:institute).paginate(page: params[:page], per_page: DEFAULT_PER_PAGE).decorate
+    @courses = Course.for_index(page: params[:page], per_page: DEFAULT_PER_PAGE).decorate
   end
 
   def show
