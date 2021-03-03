@@ -1,6 +1,8 @@
 class Course < ActiveRecord::Base
   attr_accessible :allocation, :description, :end_date, :name, :number_of_semesters, :start_date
 
+  belongs_to :institute
+
   validates :name, presence: true, length: { maximum: 255 }
   validates :allocation, presence: true, numericality: { greater_than: 0 }
   validates :number_of_semesters, numericality: { greater_than: 0 }
