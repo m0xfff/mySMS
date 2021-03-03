@@ -1,11 +1,12 @@
 class InstitutesController < ApplicationController
-  before_filter :load_institute, except: [:index]
+  before_filter :load_institute, except: [:index, :show]
 
   def index
     @institutes = Institute.paginate(page: params[:page], per_page: DEFAULT_PER_PAGE)
   end
 
   def show
+    @institute = Institute.includes(:courses).find(params[:id])
   end
 
   def edit
