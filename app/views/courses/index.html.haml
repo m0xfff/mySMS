@@ -7,6 +7,7 @@
     %th{scope: "col"} Allocation
     %th{scope: "col"} Start Date
     %th{scope: "col"} End Date
+    %th{scope: "col"} Institute
     %th{scope: "col"}
   - @courses.each do |course|
     %tr
@@ -15,6 +16,7 @@
       %td= course.allocation
       %td= course.commence
       %td= course.conclude
+      %td= course.institute
       %td
         = link_to course_path(course), class: "btn btn-default btn-xs", 'aria-label': 'Show' do
           %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }

@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Course, :type => :model do
   subject { build(:course) }
 
+  it { is_expected.to belong_to(:institute) }
+
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:allocation) }
   it { is_expected.to validate_presence_of(:start_date) }

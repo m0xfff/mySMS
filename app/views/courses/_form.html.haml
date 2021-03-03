@@ -32,5 +32,7 @@
         = f.label :end_date
         %br/
         = f.date_select :end_date
+      .form-group
+        = f.collection_select(:institute_id, Institute.all, :id, :name, {}, { class: 'form-control' })
       .actions
         = f.submit 'Save', class: "d-inline-block btn btn-success"

@@ -3,5 +3,12 @@
 %p
   %strong Name:
   = @institute.name
+%p
+  %strong Courses:
+  %ul
+    - @institute.courses.each do |course|
+      %li
+        = link_to "[#{course.id}] #{course.name}", course_path(course)
+
 
 = link_to 'Back', institutes_path, class: 'btn btn-default'

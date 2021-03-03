@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :course do
+    association :institute
     name { Faker::Educator.subject }
     description { Faker::Lorem.paragraph(sentence_count: 2) }
     number_of_semesters { Faker::Number.non_zero_digit }

@@ -1,5 +1,7 @@
 class Course < ActiveRecord::Base
-  attr_accessible :allocation, :description, :end_date, :name, :number_of_semesters, :start_date
+  attr_accessible :allocation, :description, :end_date, :name, :number_of_semesters, :start_date, :institute_id
+
+  belongs_to :institute
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :allocation, presence: true, numericality: { greater_than: 0 }
@@ -9,6 +11,10 @@ class Course < ActiveRecord::Base
   validates :end_date, presence: true
 
   validate :ends_after_starts
+
+  def self.for_index(page:, per_page:)
+    includes(:institute).paginate(page: page, per_page: per_page)
+  end
 
   private
 
