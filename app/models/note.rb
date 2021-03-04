@@ -5,4 +5,5 @@ class Note < ActiveRecord::Base
 
   validates :title, presence: true
   validates :content, presence: true
+  validates :entity, presence: true
 end
