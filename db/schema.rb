@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20210303074859) do
   end
 
   create_table "notes", :force => true do |t|
-    t.string   "title"
-    t.string   "content"
+    t.string   "title",       :null => false
+    t.string   "content",     :null => false
     t.integer  "entity_id"
     t.string   "entity_type"
     t.datetime "created_at",  :null => false
