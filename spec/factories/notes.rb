@@ -3,15 +3,15 @@ FactoryBot.define do
     title { Faker::Marketing.buzzwords }
     content { Faker::Lorem.paragraph_by_chars(number: 256) }
 
-    trait :on_student do
+    factory :student_note do
       association :entity, factory: :student
     end
 
-    trait :on_course do
+    factory :course_note do
       association :entity, factory: :course
     end
 
-    trait :on_institute do
+    factory :institute_note do
       association :entity, factory: :institute
     end
   end
