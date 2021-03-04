@@ -1,6 +1,8 @@
 class Student < ActiveRecord::Base
   attr_accessible :birth_date, :email, :first_name, :gender, :last_name, :middle_name, :title_id
+
   belongs_to :title
+  has_many :notes, as: :entity
 
   before_save :downcase_email
 
