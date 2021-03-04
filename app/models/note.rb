@@ -6,4 +6,6 @@ class Note < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
   validates :entity, presence: true
+
+  validates :entity_type, inclusion: %w[Student Course Institute]
 end
