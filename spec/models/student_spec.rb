@@ -4,6 +4,8 @@ RSpec.describe Student, :type => :model do
   let(:title) { build(:title, name: "Mr.") }
   subject { build(:student, title: title, first_name: "John", middle_name: "Adam", last_name: "Smith", email: "tester@example.com", gender: "Male", birth_date: "2000-01-01") }
 
+  it { is_expected.to have_many(:notes) }
+
   it { is_expected.to validate_presence_of(:first_name) }
   it { is_expected.to validate_length_of(:first_name).is_at_most(50) }
 
