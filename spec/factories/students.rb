@@ -6,10 +6,12 @@ FactoryBot.define do
     email { Faker::Internet.email }
     birth_date { Faker::Date.birthday }
     gender { Faker::Gender.type }
+    association :title
 
-    title do
-      name = Faker::Name.prefix
-      Title.where(name: name).first || create(:title, name: name)
-    end
+    # This breaks the test, but is good for generating hundreds of students in one go.
+    # title do
+    #   name = Faker::Name.prefix
+    #   Title.where(name: name).first || create(:title, name: name)
+    # end
   end
 end
