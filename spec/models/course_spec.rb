@@ -4,6 +4,7 @@ RSpec.describe Course, :type => :model do
   subject { build(:course) }
 
   it { is_expected.to belong_to(:institute) }
+  it { is_expected.to have_many(:notes) }
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:allocation) }
