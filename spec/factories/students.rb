@@ -8,10 +8,11 @@ FactoryBot.define do
     gender { Faker::Gender.type }
     association :title
 
-    # This breaks the test, but is good for generating hundreds of students in one go.
-    # title do
-    #   name = Faker::Name.prefix
-    #   Title.where(name: name).first || create(:title, name: name)
-    # end
+    factory :demo_student do
+      title do
+        name = Faker::Name.prefix
+        Title.where(name: name).first || create(:title, name: name)
+      end
+    end
   end
 end
