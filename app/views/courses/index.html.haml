@@ -9,20 +9,7 @@
     %th{scope: "col"} End Date
     %th{scope: "col"} Institute
     %th{scope: "col"}
-  - @courses.each do |course|
-    %tr
-      %td= course.name
-      %td= course.number_of_semesters
-      %td= course.allocation
-      %td= course.commence
-      %td= course.conclude
-      %td= course.institute
-      %td
-        = link_to course_path(course), class: "btn btn-default btn-xs", 'aria-label': 'Show' do
-          %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }
-        = link_to edit_course_path(course), class: "btn btn-default btn-xs", 'aria-label': 'Edit' do
-          %span.glyphicon.glyphicon-edit{ 'aria-hidden': 'true' }
-        = link_to course_path(course), method: :delete, class: "btn btn-danger btn-xs", 'aria-label': 'Destroy' do
-          %span.glyphicon.glyphicon-remove{ 'aria-hidden': 'true' }
+  = render partial: 'shared/links', collection: @courses, as: :instance
+  = render partial: 'course', collection: @courses, as: :course
 
 .d-flex.justify-content-center= will_paginate @courses

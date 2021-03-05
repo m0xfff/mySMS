@@ -1,0 +1,6 @@
+%tr
+  %td= student.full_name
+  %td= student.email
+  %td= student.gender
+  %td= student.born
+  = content_for "#{student.class.name.downcase}_links_#{student.id}"
