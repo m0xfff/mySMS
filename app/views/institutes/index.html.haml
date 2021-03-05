@@ -4,13 +4,7 @@
   %tr
     %th{scope: "col"} Name
     %th{scope: "col"}
-  - @institutes.each do |institute|
-    %tr
-      %td= institute.name
-      %td{ style: 'width: 1%; white-space: nowrap;' }
-        = link_to institute_path(institute), class: "btn btn-default btn-xs", 'aria-label': 'Show' do
-          %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }
-        = link_to edit_institute_path(institute), class: "btn btn-default btn-xs", 'aria-label': 'Edit' do
-          %span.glyphicon.glyphicon-edit{ 'aria-hidden': 'true' }
+  = render partial: 'shared/links', collection: @institutes, as: :instance
+  = render partial: 'institute', collection: @institutes, as: :institute
 
 .d-flex.justify-content-center= will_paginate @institutes
