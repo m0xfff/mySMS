@@ -1,11 +1,11 @@
 class Note < ActiveRecord::Base
-  attr_accessible :title, :content, :entity_id, :entity_type
+  attr_accessible :title, :content, :noteable_id, :noteable_type
 
-  belongs_to :entity, polymorphic: true
+  belongs_to :noteable, polymorphic: true
 
   validates :title, presence: true
   validates :content, presence: true
-  validates :entity, presence: true
+  validates :noteable, presence: true
 
-  validates :entity_type, inclusion: %w[Student Course Institute]
+  validates :noteable_type, inclusion: %w[Student Course Institute]
 end
