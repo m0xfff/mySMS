@@ -1,8 +1,11 @@
 - content_for "#{instance.class.name.downcase}_links_#{instance.id}" do
   %td{ style: 'width: 1%; white-space: nowrap;' }
-    = link_to polymorphic_path(instance), class: "btn btn-default btn-xs", 'aria-label': 'Show' do
-      %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }
-    = link_to edit_polymorphic_path(instance), class: "btn btn-default btn-xs", 'aria-label': 'Edit' do
-      %span.glyphicon.glyphicon-edit{ 'aria-hidden': 'true' }
-    = link_to polymorphic_path(instance), method: :delete, class: "btn btn-danger btn-xs", 'aria-label': 'Destroy' do
-      %span.glyphicon.glyphicon-remove{ 'aria-hidden': 'true' }
+    - if path_exists?(polymorphic_path(instance))
+      = link_to polymorphic_path(instance), class: "btn btn-default btn-xs", 'aria-label': 'Show' do
+        %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }
+    - if path_exists?(edit_polymorphic_path(instance))
+      = link_to edit_polymorphic_path(instance), class: "btn btn-default btn-xs", 'aria-label': 'Edit' do
+        %span.glyphicon.glyphicon-edit{ 'aria-hidden': 'true' }
+    - if path_exists?(polymorphic_path(instance), method: :delete)
+      = link_to polymorphic_path(instance), method: :delete, class: "btn btn-danger btn-xs", 'aria-label': 'Destroy' do
+        %span.glyphicon.glyphicon-remove{ 'aria-hidden': 'true' }
