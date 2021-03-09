@@ -56,4 +56,5 @@ group :development, :test do
   gem 'faker'
   gem 'byebug'
   gem 'shoulda-matchers'
+  gem 'cypress-on-rails'
 end
