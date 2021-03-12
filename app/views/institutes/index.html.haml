@@ -1,9 +1,10 @@
 %h1 🏫 Institutes
 
-%table.table
-  %tr
-    %th{scope: "col"} Name
-    %th{scope: "col"}
+%table.table.table-hover
+  %thead
+    %tr
+      %th{scope: "col"} Name
+      %th{scope: "col"}
   = render partial: 'shared/links', collection: @institutes, as: :instance
   = render partial: 'institute', collection: @institutes, as: :institute
 

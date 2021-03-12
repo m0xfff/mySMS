@@ -1,12 +1,13 @@
-%h1 🎓 Students
+%h1 🧑‍🎓 Students
 
-%table.table
-  %tr
-    %th{scope: "col"} Full Name
-    %th{scope: "col"} Email
-    %th{scope: "col"} Gender
-    %th{scope: "col"} Birth Date
-    %th{scope: "col"}
+%table.table.table-hover
+  %thead
+    %tr
+      %th{scope: "col"} Full Name
+      %th{scope: "col"} Email
+      %th{scope: "col"} Gender
+      %th{scope: "col"} Birth Date
+      %th{scope: "col"}
   = render partial: 'shared/links', collection: @students, as: :instance
   = render partial: 'student', collection: @students, as: :student
 

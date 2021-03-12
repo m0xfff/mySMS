@@ -1,14 +1,15 @@
-%h1 👩‍🏫 Courses
+%h1 📚 Courses
 
-%table.table
-  %tr
-    %th{scope: "col"} Name
-    %th{scope: "col"} Semesters
-    %th{scope: "col"} Allocation
-    %th{scope: "col"} Start Date
-    %th{scope: "col"} End Date
-    %th{scope: "col"} Institute
-    %th{scope: "col"}
+%table.table.table-hover
+  %thead
+    %tr
+      %th{scope: "col"} Name
+      %th{scope: "col"} Semesters
+      %th{scope: "col"} Allocation
+      %th{scope: "col"} Start Date
+      %th{scope: "col"} End Date
+      %th{scope: "col"} Institute
+      %th{scope: "col"}
   = render partial: 'shared/links', collection: @courses, as: :instance
   = render partial: 'course', collection: @courses, as: :course
 
