@@ -23,7 +23,7 @@ RSpec.describe StudentsController, :type => :controller do
       render_views
 
       it "has a Students heading" do
-        expect(subject.body).to match /<h1>🎓 Students</
+        expect(subject.body).to match /<h1>🧑‍🎓 Students</
       end
     end
   end
