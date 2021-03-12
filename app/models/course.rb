@@ -2,7 +2,7 @@ class Course < ActiveRecord::Base
   attr_accessible :allocation, :description, :end_date, :name, :number_of_semesters, :start_date, :institute_id
 
   belongs_to :institute
-  has_many :notes, as: :entity
+  has_many :notes, as: :noteable
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :allocation, presence: true, numericality: { greater_than: 0 }

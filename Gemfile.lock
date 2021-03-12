@@ -40,6 +40,12 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.1.8)
+    cypress-on-rails (1.9.0)
+      rack
+    database_cleaner (1.99.0)
+    database_cleaner-active_record (1.99.0)
+      activerecord
+      database_cleaner (~> 1.99.0)
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.12)
@@ -181,6 +187,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 3.2.1)
+  cypress-on-rails (~> 1.0)
+  database_cleaner-active_record
   debase
   draper (~> 2.1)
   factory_bot_rails (~> 4.10.0)

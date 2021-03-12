@@ -77,4 +77,19 @@ RSpec.describe InstitutesController, type: :controller do
       it { is_expected.to render_template('institutes/edit') }
     end
   end
+
+  describe "DELETE #destroy" do
+    subject { delete :destroy, id: institute }
+
+    it "located the requested @institute" do
+      subject
+      expect(assigns(:institute)).to eq(institute)
+    end
+
+    it "deletes the institute" do
+      expect{ subject }.to change(Institute, :count).by(-1)
+    end
+
+    it { is_expected.to redirect_to institutes_url }
+  end
 end

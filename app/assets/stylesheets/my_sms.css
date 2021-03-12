@@ -2,10 +2,92 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.42857143;
-    color: #333333;
-    background-color: #ffffff;
+    background-color: var(--sms-background);
+    color: var(--sms-text)
 }
 
 h1 {
     font-weight: 500;
+}
+
+.navbar-default {
+    background-color: var(--sms-accent);
+    border-color: var(--sms-accent);
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: var(--sms-text);
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: var(--sms-text);
+    background-color: var(--sms-active);
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: var(--sms-text);
+    background-color: var(--sms-active);
+}
+
+.navbar-default .navbar-brand {
+    color: var(--sms-text);
+}
+
+.navbar-default .navbar-brand:hover {
+    color: var(--sms-text);
+}
+
+.pagination > li > a, .pagination > li > span {
+    background-color: var(--sms-accent);
+    border-color: var(--sms-active);
+    color: var(--sms-text);
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    background-color: var(--sms-active);
+    border: 1px solid var(--sms-active);
+    color: var(--sms-text);
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: var(--sms-active);
+    border-color: var(--sms-text)
+}
+
+.btn-default {
+    color: rgba(255,255,255,25);
+    background-color: var(--sms-active);
+    border-color: var(--sms-accent);
+}
+
+.btn-default:hover {
+    color: rgba(255,255,255,25);
+    background-color: var(--sms-active);
+}
+
+.form-control {
+    background-color: var(--sms-active);
+    color: var(--sms-text);
+    font-size: 15px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--sms-active);
+    color: var(--sms-text);
+    padding: 6px 12px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: var(--sms-accent);
+}
+
+.table {
+    border-color: var(--sms-accent)
 }

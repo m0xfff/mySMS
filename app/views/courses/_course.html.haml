@@ -1,0 +1,8 @@
+%tr
+  %td= course.name
+  %td= course.number_of_semesters
+  %td= course.allocation
+  %td= course.commence
+  %td= course.conclude
+  %td= course.institute
+  = content_for "#{course.class.name.downcase}_links_#{course.id}"

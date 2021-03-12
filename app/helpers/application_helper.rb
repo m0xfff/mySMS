@@ -1,4 +1,15 @@
 module ApplicationHelper
+  def path_exists?(path, method: nil)
+    if method
+      Rails.application.routes.recognize_path(path, method: method)
+    else
+      Rails.application.routes.recognize_path(path)
+    end
+    true
+  rescue ActionController::RoutingError
+    false
+  end
+
   def will_paginate(collection_or_options = nil, options = {})
     if collection_or_options.is_a? Hash
       options = collection_or_options

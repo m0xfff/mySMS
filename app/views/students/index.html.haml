@@ -1,24 +1,14 @@
-%h1 🎓 Students
+%h1 🧑‍🎓 Students
 
-%table.table
-  %tr
-    %th{scope: "col"} Full Name
-    %th{scope: "col"} Email
-    %th{scope: "col"} Gender
-    %th{scope: "col"} Birth Date
-    %th{scope: "col"}
-  - @students.each do |student|
+%table.table.table-hover
+  %thead
     %tr
-      %td= student.full_name
-      %td= student.email
-      %td= student.gender
-      %td= student.born
-      %td
-        = link_to student_path(student), class: "btn btn-default btn-xs", 'aria-label': 'Show' do
-          %span.glyphicon.glyphicon-eye-open{ 'aria-hidden': 'true' }
-        = link_to edit_student_path(student), class: "btn btn-default btn-xs", 'aria-label': 'Edit' do
-          %span.glyphicon.glyphicon-edit{ 'aria-hidden': 'true' }
-        = link_to student_path(student), method: :delete, class: "btn btn-danger btn-xs", 'aria-label': 'Destroy' do
-          %span.glyphicon.glyphicon-remove{ 'aria-hidden': 'true' }
+      %th{scope: "col"} Full Name
+      %th{scope: "col"} Email
+      %th{scope: "col"} Gender
+      %th{scope: "col"} Birth Date
+      %th{scope: "col"}
+  = render partial: 'shared/links', collection: @students, as: :instance
+  = render partial: 'student', collection: @students, as: :student
 
 .d-flex.justify-content-center= will_paginate @students

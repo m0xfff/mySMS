@@ -56,4 +56,6 @@ group :development, :test do
   gem 'faker'
   gem 'byebug'
   gem 'shoulda-matchers'
+  gem 'cypress-on-rails', '~> 1.0'
+  gem 'database_cleaner-active_record'
 end

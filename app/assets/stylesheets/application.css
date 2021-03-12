@@ -20,3 +20,13 @@
 .justify-content-center {
     justify-content: center;
 }
+
+:root {
+    --sms-background: #1c1b19;
+    --sms-accent: #2D2C29;
+    --sms-active: #444444;
+    --sms-text: #FCE8C3;
+    --sms-success: #519F50;
+    --sms-primary: #2C78BF;
+}
+

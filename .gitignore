@@ -73,3 +73,7 @@ build-iPhoneSimulator/
 
 # JetBrains Hidden Files
 .idea/
+
+node_modules
+
+log
