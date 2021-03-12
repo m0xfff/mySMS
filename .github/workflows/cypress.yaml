@@ -1,11 +1,11 @@
-name: Cypress Tests
+name: cypress
 on: [pull_request, workflow_dispatch]
 
 env:
   MYSQL_DATABASE_HOST: 127.0.0.1
 
 jobs:
-  cypress-run:
+  test:
     runs-on: ubuntu-16.04
 
     services:
@@ -40,4 +40,4 @@ jobs:
           wait-on: 'http://localhost:3000'
           browser: chrome
           headless: true
-          project: ./spec
+          working-directory: spec
