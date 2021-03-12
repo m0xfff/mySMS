@@ -45,3 +45,13 @@ jobs:
           browser: chrome
           headless: true
           working-directory: spec
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: spec/cypress/screenshots
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: spec/cypress/videos
