@@ -43,7 +43,7 @@ jobs:
           start: bundle exec rails server -e test -p 3000
           wait-on: 'http://localhost:3000'
           browser: chrome
-          headless: true
+          headless: false
           working-directory: spec
       - uses: actions/upload-artifact@v1
         if: failure()
